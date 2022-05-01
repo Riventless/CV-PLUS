@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+			
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<p:dataTable id="datTabbusinesss"
+					emptyMessage="No existen Empresas registradas"
+					value="#{BusinessController.Business}" var="Business"
+					rowKey="#{Business.IdEmpresa}" selectionMode="single"
+					paginator="true"
+					rows="10">
+	
+
+					<p:column headerText="Id Postulante">
+						<p:outputLabel value="#{Businesss.IdEmpresa}" />
+					</p:column>
+					<p:column headerText="Nombre Empresa">
+						<p:outputLabel value="#{Businesss.Nombre_Empresa}" />
+					</p:column>
+					<p:column headerText="Dirección Empresa">
+						<p:outputLabel value="#{Businesss.Direccion_Empresa}" />
+					</p:column>
+					<p:column headerText="Numero de celular">
+						<p:outputLabel value="#{Businesss.NumTelf}" />
+					</p:column>
+					<p:column headerText="Email">
+						<p:outputLabel value="#{Businesss.Email_Empresa}" />
+					</p:column>
+					<p:column headerText="Ruc">
+						<p:outputLabel value="#{Businesss.Ruc}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
+			
+			
+			
+			
+				

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+			
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<p:dataTable id="datTabProyectos"
+					emptyMessage="No existen Proyectos Registrados"
+					value="#{proyectoController.proyectos}" var="proyecto"
+					rowKey="#{proyecto.idProyecto}" selectionMode="single"
+					paginator="true"
+					rows="10">
+	             
+
+					<p:column headerText="Id Proyecto">
+						<p:outputLabel value="#{proyecto.idProyecto}" />
+					</p:column>
+					<p:column headerText="Titulo">
+						<p:outputLabel value="#{proyecto.titulo_Proyect}" />
+					</p:column>
+					<p:column headerText="Descripcion">
+						<p:outputLabel value="#{proyecto.descripcion_Proyect}" />
+					</p:column>
+					<p:column headerText="Colaboradores">
+						<p:outputLabel value="#{proyecto.colaboradores}" />
+					</p:column><p:column headerText="Sector Portafolio">
+						<p:outputLabel value="#{proyecto.portafolio.sector}" />
+					</p:column>
+					
+	
+			
+				</p:dataTable>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
+			
+			
