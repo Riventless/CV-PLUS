@@ -7,6 +7,8 @@
 		transaction-type="JTA">
 		<jta-data-source>java:/PostgresCVPLUS</jta-data-source>
 		<class>org.example.entities.Postulants</class>
+		<class>org.example.entities.Business</class>
+		
 		<properties>
 			<property
 				name="javax.persistence.schema-generation.database.action"
