@@ -31,6 +31,7 @@
 					emptyMessage="No existen Proyectos Registrados"
 					value="#{proyectoController.proyectos}" var="proyecto"
 					rowKey="#{proyecto.idProyecto}" selectionMode="single"
+					selection="#{proyectoController.proyectoSelected}"
 					paginator="true"
 					rows="10">
 	             
