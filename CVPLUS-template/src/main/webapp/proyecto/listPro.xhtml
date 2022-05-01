@@ -14,6 +14,19 @@
 	<ui:composition template="/WEB-INF/templates/master.xhtml">
 		<ui:define name="content">
 			<h:form id="frm">
+			       <p:growl id="men"/>
+			        <p:toolbar>
+			                <f:facet name="right">
+                                <p:commandButton value="Nuevo" icon="ui-icon-disk" 
+                                   action="#{proyectoController.newProyecto()}"
+                                   ajax="false" />
+                                <p:commandButton value="Editar" icon="ui-icon-disk" 
+                                   action="#{proyectoController.editProyecto()}"
+                                   ajax="false" />
+                                   
+                            </f:facet>
+                           </p:toolbar>
+			
 				<p:dataTable id="datTabProyectos"
 					emptyMessage="No existen Proyectos Registrados"
 					value="#{proyectoController.proyectos}" var="proyecto"
@@ -42,7 +55,9 @@
 				</p:dataTable>
 
 			</h:form>
+			
 		</ui:define>
+		
 	</ui:composition>
 
 </body>
