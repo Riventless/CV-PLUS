@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<th:block th:include="fragments/head"></th:block>
+<body>
+        <th:block th:include="fragments/navbar"></th:block>
+	<div class="container">
+
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">Registro de Portafolios</div>
+			<div class="card-body">
+   
+   
+
+   <a th:href="@{/portafolios/form}" class="btn btn-primary">Nuevo Portafolio</a>
+   
+  <table class="table table-striped"> 
+       <thead>
+          <tr>
+            
+             <th>Nombre</th>
+             <th>Descripcion</th>
+             <th>Acciones</th>
+          
+          </tr>
+       
+       
+       </thead>
+       <tbody>
+             <tr th:each="portafolio:${portafolios}">
+                 
+                  <td th:text="${portafolio.NombrePortafolio}">HAMP</td>
+                  <td th:text="${portafolio.DescripcionPortafolio}">HAMP</td>
+              
+                  <td>
+                     <a th:href="@{/portafolios/edit/{id}(id=${portafolio.IdPortafolio})}"
+					class="btn btn-primary">Update</a> <a
+					th:href="@{/portafolios/{id}(id=${portafolio.IdPortafolio})}"
+					class="btn btn-danger">Delete</a>
+                  
+                  
+                  </td>
+             
+                  
+             </tr>
+             
+			
+       </tbody>
+       
+  </table>
+  </div>
+ </div>
+</div>
+<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

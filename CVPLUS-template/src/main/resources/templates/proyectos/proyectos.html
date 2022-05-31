@@ -9,24 +9,6 @@
 			<div class="card-header">Registro de Proyectos</div>
 			<div class="card-body">
    
-   <form th:action="@{/proyectos/buscar}" method="POST" th:object="${proyecto}" class="form-inline">
-					<div class="form-group">
-						<label for="buscar">Buscar</label> 
-						<input
-							type="text" class="form-control" id="buscar"
-							th:field="*{Titulo_Proyect}"
-							required="required"
-							placeholder="Ingrese el titulo"> 
-					</div>
-					
-					<button type="submit" class="btn btn-danger">
-						<i class="fa fa-search" aria-hidden="true"></i>
-					</button>
-					
-				</form>
-   
-   
-
 
 
 
