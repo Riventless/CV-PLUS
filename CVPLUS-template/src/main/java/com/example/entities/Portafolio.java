@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "portafolios")
@@ -21,12 +22,26 @@ public class Portafolio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long IdPortafolio;
 	
+	@NotEmpty(message = "Ingresar el titulo del portafolio")
 	@Column(name = "Nombre_Porta", length = 50, nullable = false)
 	private String NombrePortafolio;
 	
+	@NotEmpty(message = "Ingresar la descripcion del portafolio")
+	@Column(name = "Descripcion_Portafolio", length =500, nullable = false)
+	private String DescripcionPortafolio;
+	
 	@ManyToOne
-	@JoinColumn(name="IdStudent",nullable=false)
+	@JoinColumn(name="IdStudent",nullable=true)
 	private Student student;
+	
+	
+	public Portafolio() {
+	}
+	
+	public Portafolio(String NombrePortafolio) {
+		this.NombrePortafolio = NombrePortafolio;
+		
+	}
 	
 	
 	
@@ -35,6 +50,14 @@ public class Portafolio {
 	
 
 	
+	public String getDescripcionPortafolio() {
+		return DescripcionPortafolio;
+	}
+
+	public void setDescripcionPortafolio(String descripcionPortafolio) {
+		DescripcionPortafolio = descripcionPortafolio;
+	}
+
 	public List<Proyecto> getProyectos() {
 		return proyectos;
 	}
