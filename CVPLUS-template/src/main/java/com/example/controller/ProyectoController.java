@@ -118,6 +118,14 @@ public class ProyectoController {
         return "proyectos/edit_proyecto";
     }
 	
+	
+	 @PostMapping("/buscar")
+	 public String buscarProyecto(Model model,@ModelAttribute Proyecto proyecto) {
+		 model.addAttribute("proyectos",proyectoService.buscarProyectoPorNombre(proyecto.getTitulo_Proyect()));
+		 return "proyectos/proyectos";
+	 }
+
+
 
 
 }
