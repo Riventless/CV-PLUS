@@ -1,0 +1,54 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+
+	<th:block th:include="fragments/navbar"></th:block>
+	<div class="container">
+
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">Lista de Asesorías</div>
+			<div class="card-body">
+
+				<a th:href="@{/advisories/new}" class="btn btn-primary">Nuevo</a>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>							
+							<th scope="col">#</th>
+							<th>Tipo de Asesoría</th>
+							<th>Nombre Asesor</th>
+							<th>Apellido Asesor</th>
+							<th>Hora Inicio</th> 
+							<th>Hora Fin</th>
+							<th>Estado</th>
+							<th>Comentario</th>
+<!-- 							<th>Acciones</th>								 -->
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="advisory : ${advisory_collection}">
+
+							<td th:text="${advisory.idAsesoria}">1</td>
+							<td th:text="${advisory.servicioAdviser.servicio.serviceName}"></td>
+							<td th:text="${advisory.servicioAdviser.adviser.firstName}"></td>
+							<td th:text="${advisory.servicioAdviser.adviser.lastName}">HAMP</td>
+							<td th:text="${advisory.servicioAdviser.horaInicio}">HAMP</td> 
+							<td th:text="${advisory.servicioAdviser.horaFin}">HAMP</td>
+							<td th:text="${advisory.estado}">HAMP</td>
+							<td th:text="${advisory.comentario}">HAMP</td>		
+							<!-- <td><a th:href="@{'/students/advisory/edit'+ ${student.id}}"
+								class="btn btn-success">Editar</a></td>
+							<td><a th:href="@{'/students/advisory/deleted'+ ${student.id}}"
+								class="btn btn-success">Eliminar</a></td> -->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+	<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

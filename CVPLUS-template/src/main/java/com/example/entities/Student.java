@@ -1,16 +1,19 @@
 package com.example.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity 
-@Table(name="Students")
+@Entity
+@Table(name = "Students")
 public class Student {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long IdStudent;
@@ -20,7 +23,7 @@ public class Student {
 
 	@Column(name = "LastName", length = 80, nullable = false)
 	private String LastName;
-	
+
 	@Column(name = "Email", length = 80, nullable = false)
 	private String Email;
 
@@ -29,15 +32,18 @@ public class Student {
 
 	@Column(name = "Rubro", length = 80, nullable = false)
 	private String Rubro;
-	
+
 	@Column(name = "Categoria", nullable = true)
 	private Boolean Categoria;
 
 	@Column(name = "Numero", nullable = false)
 	private Long Numero;
-	
-	@Column(name = "Contrasenia",length = 50, nullable = false)
+
+	@Column(name = "Contrasenia", length = 50, nullable = false)
 	private String Contrasenia;
+
+	@OneToMany(mappedBy = "student")
+	Set<Advisory> advisories;
 
 	public Long getIdStudent() {
 		return IdStudent;
@@ -110,9 +116,13 @@ public class Student {
 	public void setContrasenia(String contrasenia) {
 		Contrasenia = contrasenia;
 	}
-	
-	
-	
-	
+
+	public Set<Advisory> getAdvisories() {
+		return advisories;
+	}
+
+	public void setAdvisories(Set<Advisory> advisories) {
+		this.advisories = advisories;
+	}
 
 }
