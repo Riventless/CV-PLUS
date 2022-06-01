@@ -1,97 +1,111 @@
 package com.example.entities;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Empresas")
+@Table(name="empresas" )
 public class Empresa {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long IdEmpresa;
+	private Long id;
 	
-	@Column(name = "Nombre_Empresa", length = 100, nullable = false)
-	private String Nombre_Empresa;
+	@Column(name="nombre",nullable=false)
+	private String nombre;
+	@Column(name="direccion",nullable=false)
+	private String direccion;
+	@Column(name="numero",nullable=false)
+	private String numero;
+	@Column(name="email",nullable=false)
+	private String email;
+	@Column(name="ruc",nullable=false)
+	private String ruc;
+	@Column(name="contrasenia",nullable=false)
+	private String contrasenia;
 	
-	@Column(name = "Direccion_Empresa", length = 50, nullable = false)
-	private String Direccion_Empresa;
-	
-	@Column(name = "NumTelf",nullable = false)
-	private Long NumTelf;
-	
-	@Column(name = "Email_Empresa", length = 50, nullable = false)
-	private String Email_Empresa;
-	
-	@Column(name = "Ruc",nullable = false)
-	private Long Ruc;
+	@ManyToMany
+	@JoinTable(name="valoracion_portafolio",
+		joinColumns= {
+				@JoinColumn(name="empresa_id",referencedColumnName="id",nullable=false)			
+		},
+		inverseJoinColumns= {
+				@JoinColumn(name="portafolio_id",referencedColumnName="id",nullable=false)
+		}
+	)
+	private List<Portafolio> portafolios=new ArrayList<>();
 
-	@Column(name = "Contrasenia",length = 50, nullable = false)
-	private String Contrasenia;
-	
-	public Long getIdEmpresa() {
-		return IdEmpresa;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdEmpresa(Long idEmpresa) {
-		IdEmpresa = idEmpresa;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getNombre_Empresa() {
-		return Nombre_Empresa;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setNombre_Empresa(String nombre_Empresa) {
-		Nombre_Empresa = nombre_Empresa;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public String getDireccion_Empresa() {
-		return Direccion_Empresa;
+	public String getDireccion() {
+		return direccion;
 	}
 
-	public void setDireccion_Empresa(String direccion_Empresa) {
-		Direccion_Empresa = direccion_Empresa;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
-	public Long getNumTelf() {
-		return NumTelf;
+	public String getNumero() {
+		return numero;
 	}
 
-	public void setNumTelf(Long numTelf) {
-		NumTelf = numTelf;
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
-	public String getEmail_Empresa() {
-		return Email_Empresa;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEmail_Empresa(String email_Empresa) {
-		Email_Empresa = email_Empresa;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public Long getRuc() {
-		return Ruc;
+	public String getRuc() {
+		return ruc;
 	}
 
-	public void setRuc(Long ruc) {
-		Ruc = ruc;
+	public void setRuc(String ruc) {
+		this.ruc = ruc;
 	}
 
 	public String getContrasenia() {
-		return Contrasenia;
+		return contrasenia;
 	}
 
 	public void setContrasenia(String contrasenia) {
-		Contrasenia = contrasenia;
+		this.contrasenia = contrasenia;
 	}
 
-	
-	
+	public List<Portafolio> getPortafolios() {
+		return portafolios;
+	}
 
+	public void setPortafolios(List<Portafolio> portafolios) {
+		this.portafolios = portafolios;
+	}
 	
 }
