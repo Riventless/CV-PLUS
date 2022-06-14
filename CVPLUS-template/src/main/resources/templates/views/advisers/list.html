@@ -10,7 +10,7 @@
 			<div class="card-header">Asesorías x Asesor</div>
 			<div class="card-body">
 
-				<a th:href="@{/servicesXadvisories/new}" class="btn btn-primary">Nuevo</a>
+				<a th:href="@{/views/advisers/new}" class="btn btn-primary">Nuevo</a>
 
 				<table class="table table-striped">
 					<thead>
@@ -21,8 +21,8 @@
 							<th>Apellido Asesor</th>
 							<th>Hora Inicio</th> 
 							<th>Hora Fin</th>
-							
-<!-- 							<th>Acciones</th>								 -->
+							<th>Editar</th>
+							<th>Eliminar</th>								
 						</tr>
 					</thead>
 					<tbody>
@@ -34,11 +34,18 @@
 							<td th:text="${sxa.adviser.lastName}">HAMP</td>
 							<td th:text="${sxa.horaInicio}">HAMP</td> 
 							<td th:text="${sxa.horaFin}">HAMP</td>
-<!-- 							<td><a th:href="@{'/students/advisory/edit'+ ${student.id}}"
-<!-- 								class="btn btn-success">Editar</a></td> -->
-<!-- 							<td><a th:href="@{'/students/advisory/deleted'+ ${student.id}}" -->
-<!-- 								class="btn btn-success">Eliminar</a></td> -->
-<!-- 						</tr> -->
+							<td>
+								<a class="btn btn-success btn-sm" th:href="@{/views/advisers/edit/} + ${sxa.idServicioAdviser}"
+									th:text="Editar" title="titulo">
+								</a>
+							</td>
+							<td>
+								<a class="btn btn-danger btn-sm" th:href="@{/views/advisers/delete/}+ ${sxa.idServicioAdviser}"
+									th:text="Eliminar" title="Eliminar Registro"
+									onclick="return confirm('Seguro que desea eliminar este registro?')">
+								</a>
+							</td>
+<!-- 						</tr>
 <!-- 					</tbody> -->
 				</table>
 			</div>

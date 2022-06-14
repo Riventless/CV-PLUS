@@ -2,13 +2,15 @@ package com.example.repository;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.example.entities.Servicio;
 
-public interface ServiceRepository  extends JpaRepository<Servicio, Long> {
+@Repository
+public interface ServiceRepository extends CrudRepository<Servicio, Long> {
 	
 	 @Query("FROM Servicio sa ORDER BY Estado ASC")
 	 public List<Servicio> findAllAdvisorSortByType();

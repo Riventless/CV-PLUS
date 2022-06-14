@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "servicios_advisers")
@@ -19,7 +20,8 @@ public class ServicioXAdviser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idServicioAdviser;
-
+	
+	@NotEmpty
 	@Column(name = "Hora_Inicio", length = 8, nullable = false)
 	private String horaInicio;
 

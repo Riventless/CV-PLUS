@@ -22,7 +22,10 @@ public class Advisory {
 
 	@Column(name = "Estado", length = 20, nullable = false)
 	private String estado;
-
+	
+	@Column(name = "Dia", nullable = false)
+	private String dia;
+	
 	@ManyToOne
 	@JoinColumn(name = "idStudent", nullable = false)
 	private Student student;
@@ -32,7 +35,7 @@ public class Advisory {
 	private ServicioXAdviser servicioAdviser;
 	
 	
-	
+
 	public Long getIdAsesoria() {
 		return idAsesoria;
 	}
@@ -52,11 +55,19 @@ public class Advisory {
 	public String getEstado() {
 		return estado;
 	}
-
+	
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+	
+	public String getDia() {
+		return dia;
+	}
 
+	public void setDia(String dia) {
+		this.dia = dia;
+	}
+	
 	public Student getStudent() {
 		return student;
 	}
@@ -72,5 +83,6 @@ public class Advisory {
 	public void setServicioAdviser(ServicioXAdviser servicioAdviser) {
 		this.servicioAdviser = servicioAdviser;
 	}
+	
 
 }

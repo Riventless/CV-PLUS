@@ -101,5 +101,11 @@ public class Adviser {
 	public void setServiciosAdviser(Set<ServicioXAdviser> serviciosAdviser) {
 		this.serviciosAdviser = serviciosAdviser;
 	}
-
+	
+	
+	@Override
+	public String toString() {
+		return firstName + " " + lastName;
+	}
+	
 }

@@ -1,7 +1,12 @@
 package com.example.repository;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface AdviserRepository {
+import com.example.entities.Adviser;
+
+@Repository
+public interface AdviserRepository extends CrudRepository<Adviser, Long> {
 	
     
 }

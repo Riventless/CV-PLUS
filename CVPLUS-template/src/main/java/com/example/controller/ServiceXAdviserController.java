@@ -8,9 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.entities.Adviser;
+import com.example.entities.Servicio;
 import com.example.entities.ServicioXAdviser;
 import com.example.service.AdviserService;
 import com.example.service.ServicioService;
@@ -18,20 +21,23 @@ import com.example.service.ServicioXAdviserService;
 
 
 @Controller
-@RequestMapping("/servicesXadvisories")
+@RequestMapping("/views/advisers")
 public class ServiceXAdviserController {
 
 	@Autowired
 	private  ServicioXAdviserService sxaService;
 	
-	@Autowired
-	private ServicioService servicioService;
 	
+	@Autowired 
+	private ServicioService servicioService;
+	  
 	@Autowired
-	private AdviserService advService;
+	private AdviserService adviserService;
+	 
+	
 	/*
 	 * private ServicioXAdviserService advisoryservice; private
-	 * ServicioXAdviserService sxa_service; private List<ServicioXAdviser> sxa_list
+	 * ServicioXAdviserService sxa_service; private List<ServicioXAdviserRepository> sxa_list
 	 * = new ArrayList<>();
 	 * 
 	 * public ServiceXAdviserController(ServicioXAdviserService sxaservice,
@@ -39,29 +45,61 @@ public class ServiceXAdviserController {
 	 * advisoryservice; this.sxa_service = servicioxadviserservice; }
 	 */
     
-    @GetMapping
+    @GetMapping("/")
 	public String showAllSxA(Model model) { 
 		model.addAttribute("sxa_collection", sxaService.getAllSxA());
-		return "serviceXadviser/list"; 
+		return "/views/advisers/list"; 
 	}
     
 	
 	  @GetMapping("/new")
 	  public String saveSxA(Model model) {
-	  model.addAttribute("sxa", new ServicioXAdviser());
-	  model.addAttribute("servicios", servicioService.getAllServices());
-//	  model.addAttribute("advisers", servicioService.getAllServices());
-	  return "serviceXadviser/form"; }
+		  
+		  ServicioXAdviser sxa = new ServicioXAdviser();
+		  List<Adviser> listAdvisers = adviserService.getAllAdvisers();
+		  List<Servicio> listServices = servicioService.getAllServices();
+		  
+		  model.addAttribute("titulo", "Registro de servicios por asesor");
+		  model.addAttribute("sxa", sxa);
+		  model.addAttribute("advisers", listAdvisers);
+	  	  model.addAttribute("services", listServices);
+		  return "/views/advisers/form"; 
+	}
 	  
 	  
-	
-	/*
-	 * @PostMapping("/save") public String saveAdvisory(@ModelAttribute("advisory")
-	 * ServicioXAdviser advisory) { sxaService.saveAdvisory(advisory); return
-	 * "redirect:/advisories"; }
-	 */
+		
+	  @PostMapping("/save") 
+	  public String saveAdvisory(@ModelAttribute ServicioXAdviser sxa)  { 
+		  //ServicioXAdviserService sxaService)
+		  sxaService.saveSxA(sxa);
+	  	return "redirect:/views/advisers/"; 
+	  
+	  }
+		 
 	 
+	  @GetMapping("/edit/{id}")
+	  public String editSxA(@PathVariable("id") Long idsxa, Model model) {
+		  
+		  ServicioXAdviser sxa = sxaService.FindById(idsxa);
+		  List<Adviser> listAdvisers = adviserService.getAllAdvisers();
+		  List<Servicio> listServices = servicioService.getAllServices();
+		  
+		  model.addAttribute("titulo", "Editar servicios del asesor");
+		  model.addAttribute("sxa", sxa);
+		  model.addAttribute("advisers", listAdvisers);
+	  	  model.addAttribute("services", listServices);
+		  return "/views/advisers/form"; 
+	}
+	  
 	
+	  @GetMapping("/delete/{id}")
+	  public String deleteSxA(@PathVariable("id") Long idsxa) {
+		  
+		  sxaService.DeleteSxA(idsxa);
+		  
+		  return "redirect:/views/advisers/"; 
+	}
+	  
 //	public String registrarAdvisory(@Validated @ModelAttribute Advisory doctor, BindingResult result, Model model) {		
 //		int rpta;
 		

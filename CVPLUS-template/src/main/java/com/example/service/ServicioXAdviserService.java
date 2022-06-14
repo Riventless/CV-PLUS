@@ -17,15 +17,25 @@ public class ServicioXAdviserService {
 	private ServicioXAdviserRepository service_adviserRepository;
 	
 	
-	
 	public List<ServicioXAdviser> getAllSxA() {
-		return service_adviserRepository.findAll();
+		return (List<ServicioXAdviser>) service_adviserRepository.findAll();
+	}
+	
+	public void saveSxA (ServicioXAdviser sxa) {
+		
+		service_adviserRepository.save(sxa);
 	}
 	
 	
+	public ServicioXAdviser FindById (Long id) {
+		
+		return service_adviserRepository.findById(id).orElse(null);
+	}
 	
-	
-	
+	public void DeleteSxA (Long id) {
+		
+		service_adviserRepository.deleteById(id);
+	}
 	
 	
 	/*

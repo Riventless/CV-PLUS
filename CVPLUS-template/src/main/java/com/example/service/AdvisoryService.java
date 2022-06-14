@@ -14,23 +14,24 @@ public class AdvisoryService {
 	@Autowired
 	private AdvisoryRepository advisoryrepository;
 	
+	
 	public List<Advisory> getAllAdvisory() {
-		return advisoryrepository.findAll();
+		return (List<Advisory>) advisoryrepository.findAll();
 	}
 	
 
-	public Advisory saveAdvisory(Advisory advisory) {
+	public void saveAdvisory(Advisory advisory) {
 //		int existAdvisory=advisoryrepository.verificarExistenciaAdvisory(advisory.getIdAsesoria());
 		
 //		if(existAdvisory==0)
-		return advisoryrepository.save(advisory);
+		advisoryrepository.save(advisory);
 		
 		
 //		return existeAdvisory;
 	}
 	
-	public Advisory getAdvisoryById(Long id) {
-        return advisoryrepository.findById(id).get();
+	public Advisory findAdvisoryById(Long id) {
+        return advisoryrepository.findById(id).orElse(null);
     }
 
     
@@ -45,11 +46,11 @@ public class AdvisoryService {
 	
 	
 	
-	/*
-	 * @Override public ServiciogetOneById(Long id) throws Exception{ return
-	 * service_adviserRepository.findById(id).orElseThrow(() -> new
-	 * RuntimeException("ServicioNot Found!")); }
-	 * 
+	 /*
+	 public Object ServiciogetOneById(Long id) throws Exception{ return
+	 service_adviserRepository.findById(id).orElseThrow(() -> new
+	 RuntimeException("ServicioNot Found!")); }
+	  
 	 * @Override public Long create(Servicioentity) throws Exception{
 	 * service_adviserRepository.save(entity); return entity.getId(); }
 	 * 

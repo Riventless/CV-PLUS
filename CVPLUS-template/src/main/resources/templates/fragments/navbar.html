@@ -1,15 +1,23 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #5cb1ef;">
-  <a class="navbar-brand" href="#">CVPLUS</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="#">Inicio</a>
-      <a class="nav-item nav-link " th:href="@{/servicesXadvisories}">Servicio x Asesores </a>
-      <a class="nav-item nav-link active" th:href="@{/advisories}">Asesorías <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Mi Portafolio</a>
-      <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Mi Cv</a>
-    </div>
-  </div>
+<nav class="navbar navbar-expand-lg navbar-light"
+	style="background-color: #5cb1ef;">
+	<div class="container">
+		<a class="navbar-brand" href="#"><strong> CVPLUS</strong></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-item nav-link" href="#">Inicio</a> <a
+					class="nav-item nav-link " th:href="@{/views/advisers/}">Servicio
+					x Asesores </a> <a class="nav-item nav-link active"
+					th:href="@{/views/students/}">Asesorías <span class="sr-only">(current)</span>
+				</a>
+				<a class="nav-item nav-link" href="#">Mi Portafolio</a> <a
+					class="nav-item nav-link disabled" href="#" tabindex="-1"
+					aria-disabled="true">Mi Cv</a>
+			</div>
+		</div>
+	</div>
 </nav>

@@ -10,7 +10,7 @@
 			<div class="card-header">Registrar Asesoría</div>
 			<div class="card-body">
 
-				<form th:object="${advisories}" th:action="@{/advisories/save}"
+				<!-- <form th:object="${advisories}" th:action="@{/advisories/save}"
 					th:method="post">
 					<div class="form-group">
 						<input type="hidden" class="form-control" th:field="*{id}" />
@@ -18,7 +18,7 @@
 
 
 
-					<div class="form-group">
+					<div class="form-group row">
 						<label for="category">Tipo de Servicio:</label> 
 						<select
 							id="tipoServicio" class="form-control" th:field="*{idServicio.tipoAsesoria}">
@@ -52,9 +52,9 @@
 						<textarea rows="4" type="textarea" class="form-control"
 							id="description" th:field="*{description}"
 							playeholder="Comenta aquí ..." /></textarea>
-					</div>
+					</div> -->
 
-					<a th:href="@{/advisory/}" class="btn btn-primary">Regresar</a>
+					<a th:href="@{/views/students/}" class="btn btn-primary">Regresar</a>
 					<button type="submit" class="btn btn-success">Guardar</button>
 				</form>
 			</div>

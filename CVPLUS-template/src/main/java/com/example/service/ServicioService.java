@@ -5,18 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.entities.Advisory;
-import com.example.entities.ServicioXAdviser;
-import com.example.repository.AdvisoryRepository;
-import com.example.repository.ServicioXAdviserRepository;
+import com.example.entities.Servicio;
+import com.example.repository.ServiceRepository;
+
 
 @Service
 public class ServicioService {
 	
 	@Autowired
-	private ServicioXAdviserRepository sxarepository;
+	private ServiceRepository serviceRepository;
 	
-	public List<ServicioXAdviser> getAllServices() {
-		return sxarepository.findAll();
+	public List<Servicio> getAllServices() {
+		return (List<Servicio>) serviceRepository.findAll();
 	}
 }

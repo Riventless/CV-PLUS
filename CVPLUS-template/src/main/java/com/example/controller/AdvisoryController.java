@@ -16,7 +16,7 @@ import com.example.service.AdvisoryService;
 import com.example.service.ServicioXAdviserService;
 
 @Controller
-@RequestMapping("/advisories")
+@RequestMapping("/views/students")
 public class AdvisoryController {
 	
 	private AdvisoryService advisoryservice;
@@ -28,17 +28,17 @@ public class AdvisoryController {
         this.sxa_service = servicioxadviserservice;
     }
     
-    @GetMapping
+    @GetMapping("/")
 	public String showAllAdvisory(Model model) { 
 		model.addAttribute("advisory_collection", advisoryservice.getAllAdvisory());
-		return "students/list_advisories"; 
+		return "/views/students/list_advisories"; 
 	}
     
     @GetMapping("/new")
 	public String registrarAdvisory(Model model) {
 		model.addAttribute("advisory", new Advisory());
 		model.addAttribute("servicioAdviser", sxa_service.getAllSxA().toString());
-		return "students/create_advisories";
+		return "/views/students/create_advisories";
 	}
     
 	
