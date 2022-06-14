@@ -1,29 +1,5 @@
 package com.example.controller;
 
-<<<<<<< Updated upstream
-import com.example.entities.Portafolio;
-import com.example.service.EmpresaService;
-import com.example.service.PortafolioService;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-@Controller
-@RequestMapping("/portafolios")
-public class PortafolioController {
-	
-	private EmpresaService empresaService;
-	private PortafolioService portafolioService;
-	
-	public PortafolioController(EmpresaService empresaService,PortafolioService portafolioService) {
-		this.empresaService=empresaService;
-		this.portafolioService=portafolioService;
-	}
-=======
 import java.util.List;
 
 import javax.validation.Valid;
@@ -55,40 +31,10 @@ public class PortafolioController {
 	
 	@Autowired
 	private PortafolioService1 portafolioService1;
->>>>>>> Stashed changes
 	
 	
 	@GetMapping
 	public String home(Model model) {
-<<<<<<< Updated upstream
-		model.addAttribute("portafolios",portafolioService.getAllPortafolios());
-		return "portafolios/list";
-	}
-	
-	
-	@GetMapping("/comment/{id}")
-	public String commentPortafolioForm(@PathVariable("id")long id,Model model) {
-		Portafolio portafolio=portafolioService.getPortafolioById(id);
-		System.out.println(portafolio.getNombre());
-		model.addAttribute("portafolio",portafolio);
-		return "portafolios/comment";
-	}
-	
-	@GetMapping("/visual/{id}")
-	public String visualPortafolioForm(@PathVariable("id")long id,Model model) {
-		Portafolio portafolio=portafolioService.getPortafolioById(id);
-		System.out.println(portafolio.getNombre());
-		model.addAttribute("portafolio",portafolio);
-		return "portafolios/visual";
-	}
-	
-	
-	@PostMapping("/update/{id}")
-	public String updateEvaluacionPortafolio(@PathVariable("id") long id,Portafolio portafolio) {
-		portafolioService.update(id,portafolio);
-		
-		return "redirect:/portafolios";
-=======
 		model.addAttribute("portafolio", new Portafolio());
 		model.addAttribute("portafolios",portafolioService1.getAllPortafolios());
 		return "portafolios/list";
@@ -134,13 +80,40 @@ public class PortafolioController {
 			// TODO: handle exception
 		}
 		return "redirect:/portafolios/list";
->>>>>>> Stashed changes
 	}
 	
-
+	@PostMapping("/update/{id}")
+	public String updatePortafolio(@Valid Portafolio portafolio, BindingResult result,Model model,
+			SessionStatus status) {
+		
+		try {
+			if(result.hasErrors()) {
+				return "portafolios/edit_portafolio";
+			}
+			portafolioService.saveOrUpdate(portafolio);
+			status.setComplete();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return "redirect:/portafolios/list";
+	}
 	
-<<<<<<< Updated upstream
-=======
+	
+	//@GetMapping("/edit/{id}")
+  //  public String editPortafolioForm(@PathVariable("id") long id, Model model) throws Exception {
+	//	List<Portafolio>portafolios=portafolioService.getPortafolioById(id);
+//		model.addAttribute("portafolio",portafolios);
+  //      return "portafolios/edit_portafolio";
+  //  }
+	
+	
+	@GetMapping("/edit/{id}")
+    public String editPortafolioForm(@PathVariable("id") long id, Model model) {
+        Portafolio portafolio = portafolioService1.getSPortafolioById(id);
+        model.addAttribute("portafolio", portafolio);
+        return "portafolios/edit_portafolio";
+    }
+	
 	@GetMapping("/{id}")
     public String deletePortafolio(@PathVariable Long id) throws Exception {
         portafolioService.delete(id);
@@ -153,6 +126,5 @@ public class PortafolioController {
 		 return "portafolios/list";
 	 }
 	
->>>>>>> Stashed changes
 	
 }

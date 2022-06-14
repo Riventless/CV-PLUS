@@ -1,111 +1,97 @@
 package com.example.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="empresas" )
+@Table(name="Empresas")
 public class Empresa {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Long IdEmpresa;
 	
-	@Column(name="nombre",nullable=false)
-	private String nombre;
-	@Column(name="direccion",nullable=false)
-	private String direccion;
-	@Column(name="numero",nullable=false)
-	private String numero;
-	@Column(name="email",nullable=false)
-	private String email;
-	@Column(name="ruc",nullable=false)
-	private String ruc;
-	@Column(name="contrasenia",nullable=false)
-	private String contrasenia;
+	@Column(name = "Nombre_Empresa", length = 100, nullable = false)
+	private String Nombre_Empresa;
 	
-	@ManyToMany
-	@JoinTable(name="valoracion_portafolio",
-		joinColumns= {
-				@JoinColumn(name="empresa_id",referencedColumnName="id",nullable=false)			
-		},
-		inverseJoinColumns= {
-				@JoinColumn(name="portafolio_id",referencedColumnName="id",nullable=false)
-		}
-	)
-	private List<Portafolio> portafolios=new ArrayList<>();
+	@Column(name = "Direccion_Empresa", length = 50, nullable = false)
+	private String Direccion_Empresa;
+	
+	@Column(name = "NumTelf",nullable = false)
+	private Long NumTelf;
+	
+	@Column(name = "Email_Empresa", length = 50, nullable = false)
+	private String Email_Empresa;
+	
+	@Column(name = "Ruc",nullable = false)
+	private Long Ruc;
 
-	public Long getId() {
-		return id;
+	@Column(name = "Contrasenia",length = 50, nullable = false)
+	private String Contrasenia;
+	
+	public Long getIdEmpresa() {
+		return IdEmpresa;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdEmpresa(Long idEmpresa) {
+		IdEmpresa = idEmpresa;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombre_Empresa() {
+		return Nombre_Empresa;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombre_Empresa(String nombre_Empresa) {
+		Nombre_Empresa = nombre_Empresa;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getDireccion_Empresa() {
+		return Direccion_Empresa;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setDireccion_Empresa(String direccion_Empresa) {
+		Direccion_Empresa = direccion_Empresa;
 	}
 
-	public String getNumero() {
-		return numero;
+	public Long getNumTelf() {
+		return NumTelf;
 	}
 
-	public void setNumero(String numero) {
-		this.numero = numero;
+	public void setNumTelf(Long numTelf) {
+		NumTelf = numTelf;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getEmail_Empresa() {
+		return Email_Empresa;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail_Empresa(String email_Empresa) {
+		Email_Empresa = email_Empresa;
 	}
 
-	public String getRuc() {
-		return ruc;
+	public Long getRuc() {
+		return Ruc;
 	}
 
-	public void setRuc(String ruc) {
-		this.ruc = ruc;
+	public void setRuc(Long ruc) {
+		Ruc = ruc;
 	}
 
 	public String getContrasenia() {
-		return contrasenia;
+		return Contrasenia;
 	}
 
 	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
+		Contrasenia = contrasenia;
 	}
 
-	public List<Portafolio> getPortafolios() {
-		return portafolios;
-	}
+	
+	
 
-	public void setPortafolios(List<Portafolio> portafolios) {
-		this.portafolios = portafolios;
-	}
 	
 }
