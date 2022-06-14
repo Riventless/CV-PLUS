@@ -10,8 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
 import java.util.List;
 
 @Entity
@@ -21,13 +22,16 @@ public class Proyecto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long IdProyecto;
 
+	@NotEmpty(message = "Ingresar el titulo del proyecto")
 	@Column(name = "Titulo_Proyect", length = 100, nullable = false)
 	private String Titulo_Proyect;
 
+	@NotEmpty(message = "Ingresar el descripcion del proyecto")
 	@Column(name = "Descripcion_Proyect", length = 500, nullable = false)
 	private String Descripcion_Proyect;
 
-	@Column(name = "Colaboradores", length = 200)
+	
+	@Column(name = "Colaboradores", length = 800)
 	private String Colaboradores;
 
 	@ManyToMany
@@ -42,9 +46,25 @@ public class Proyecto {
 	private List<Portafolio> portafolios = new ArrayList<>();
 //Explicacion min 49 clase sem9 sesion 2
 
+	
+	public Proyecto() {
+}
+
+	
+	
+	public Proyecto(String titulo_Proyect, String descripcion_Proyect, String colaboradores) {
+		this.Titulo_Proyect = titulo_Proyect;
+		this.Descripcion_Proyect = descripcion_Proyect;
+		this.Colaboradores = colaboradores;
+}
+	
+	
+	
 	public Long getIdProyecto() {
 		return IdProyecto;
 	}
+
+	
 
 	public void setIdProyecto(Long idProyecto) {
 		IdProyecto = idProyecto;
@@ -82,6 +102,9 @@ public class Proyecto {
 		this.portafolios = portafolios;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Proyecto{" + "Titulo_Proyect=" + Titulo_Proyect + ", Descripcion_Proyect=" + Descripcion_Proyect + ", Colaboradores=" + Colaboradores + '}';
+	}
 	
 }
