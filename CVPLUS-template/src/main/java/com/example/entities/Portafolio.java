@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +29,9 @@ public class Portafolio {
 	@ManyToMany(mappedBy="portafolios")
 	private List<Empresa> empresas=new ArrayList<>();
 	
+	@ManyToOne()
+	@JoinColumn(name="student_id")
+	private Student students; 
 	
 	public Long getId() {
 		return id;
@@ -58,4 +63,12 @@ public class Portafolio {
 	public void setEmpresas(List<Empresa> empresas) {
 		this.empresas = empresas;
 	}
+	public Student getStudents() {
+		return students;
+	}
+	public void setStudents(Student students) {
+		this.students = students;
+	}
+	
+	
 }

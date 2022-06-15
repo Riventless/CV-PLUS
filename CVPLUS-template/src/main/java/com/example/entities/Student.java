@@ -1,118 +1,163 @@
 package com.example.entities;
 
+import java.util.List;
+
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity 
-@Table(name="Students")
+@Entity
+@Table(name = "students")
 public class Student {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long IdStudent;
+	private Long id;
 
 	@Column(name = "FirstName", length = 80, nullable = false)
-	private String FirstName;
+	private String firstName;
 
 	@Column(name = "LastName", length = 80, nullable = false)
-	private String LastName;
-	
+	private String lastName;
+
 	@Column(name = "Email", length = 80, nullable = false)
-	private String Email;
+	private String email;
 
 	@Column(name = "Dni", nullable = false)
-	private Long Dni;
+	private Long dni;
 
 	@Column(name = "Rubro", length = 80, nullable = false)
-	private String Rubro;
-	
+	private String rubro;
+
 	@Column(name = "Categoria", nullable = true)
-	private Boolean Categoria;
+	private Boolean categoria;
 
 	@Column(name = "Numero", nullable = false)
-	private Long Numero;
+	private Long numero;
+
+	@Column(name = "Contrasenia", length = 50, nullable = false)
+	private String contrasenia;
+
 	
-	@Column(name = "Contrasenia",length = 50, nullable = false)
-	private String Contrasenia;
+	@OneToMany(mappedBy="students", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Portafolio> portafolios;
 
-	public Long getIdStudent() {
-		return IdStudent;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdStudent(Long idStudent) {
-		IdStudent = idStudent;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
+
 
 	public String getFirstName() {
-		return FirstName;
+		return firstName;
 	}
+
 
 	public void setFirstName(String firstName) {
-		FirstName = firstName;
+		this.firstName = firstName;
 	}
+
 
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
+
 
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
+
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
+
 
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
+
 
 	public Long getDni() {
-		return Dni;
+		return dni;
 	}
+
 
 	public void setDni(Long dni) {
-		Dni = dni;
+		this.dni = dni;
 	}
+
 
 	public String getRubro() {
-		return Rubro;
+		return rubro;
 	}
+
 
 	public void setRubro(String rubro) {
-		Rubro = rubro;
+		this.rubro = rubro;
 	}
+
 
 	public Boolean getCategoria() {
-		return Categoria;
+		return categoria;
 	}
+
 
 	public void setCategoria(Boolean categoria) {
-		Categoria = categoria;
+		this.categoria = categoria;
 	}
+
 
 	public Long getNumero() {
-		return Numero;
+		return numero;
 	}
+
 
 	public void setNumero(Long numero) {
-		Numero = numero;
+		this.numero = numero;
 	}
+
 
 	public String getContrasenia() {
-		return Contrasenia;
+		return contrasenia;
 	}
+
 
 	public void setContrasenia(String contrasenia) {
-		Contrasenia = contrasenia;
+		this.contrasenia = contrasenia;
 	}
-	
-	
-	
+
+
+	public List<Portafolio> getPortafolios() {
+		return portafolios;
+	}
+
+
+	public void setPortafolios(List<Portafolio> portafolios) {
+		this.portafolios = portafolios;
+	}
+
 	
 
+	/*public Set<Advisory> getAdvisories() {
+		return advisories;
+	}
+
+	public void setAdvisories(Set<Advisory> advisories) {
+		this.advisories = advisories;
+	}*/
+
+	
+	
 }
