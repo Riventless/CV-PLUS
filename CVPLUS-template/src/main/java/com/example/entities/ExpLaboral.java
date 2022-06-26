@@ -12,68 +12,103 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ExpLaborals")
+@Table(name="Explaboral")
 public class ExpLaboral {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long IdExpLab;
+	private Long idExpLaboral;
 	
-	@Column(name = "DescripcionExpL", length = 200, nullable = false)
-	private String DescripcionExpL;
+	@Column(name = "nombreInstitucionLaboral", length = 200, nullable = false)
+	private String nombreInstitucionLaboral;
 	
-	@Column(name = "FechaInicioExpL",nullable = false)
-	private LocalDate FechaInicioExpL;
+	@Column(name = "puestoLaboral", length = 200, nullable = false)
+	private String puestoLaboral;
 	
-	@Column(name = "FechaFinExpL",nullable = false)
-	private LocalDate FechaFinExpL;
+	@Column(name = "descripcionExpLaboral", length = 200, nullable = false)
+	private String descripcionExpL;
+	
+	@Column(name = "fechaInicioExpLaboral",nullable = false)
+	private LocalDate fechaInicioExpL;
+	
+	@Column(name = "fechaFinExpLaboral",nullable = false)
+	private LocalDate fechaFinExpL;
+	
 	
 	@ManyToOne
-	@JoinColumn(name="Id_Curriculum",nullable=false)
+	@JoinColumn(name="id_Curriculum",nullable=false)
 	private Curriculum curriculum;
 
-	public Long getIdExpLab() {
-		return IdExpLab;
+
+	public Long getIdExpLaboral() {
+		return idExpLaboral;
 	}
 
-	public void setIdExpLab(Long idExpLab) {
-		IdExpLab = idExpLab;
+
+	public void setIdExpLaboral(Long idExpLaboral) {
+		this.idExpLaboral = idExpLaboral;
 	}
+
+
+	public String getNombreInstitucionLaboral() {
+		return nombreInstitucionLaboral;
+	}
+
+
+	public void setNombreInstitucionLaboral(String nombreInstitucionLaboral) {
+		this.nombreInstitucionLaboral = nombreInstitucionLaboral;
+	}
+
+
+	public String getPuestoLaboral() {
+		return puestoLaboral;
+	}
+
+
+	public void setPuestoLaboral(String puestoLaboral) {
+		this.puestoLaboral = puestoLaboral;
+	}
+
 
 	public String getDescripcionExpL() {
-		return DescripcionExpL;
+		return descripcionExpL;
 	}
+
 
 	public void setDescripcionExpL(String descripcionExpL) {
-		DescripcionExpL = descripcionExpL;
+		this.descripcionExpL = descripcionExpL;
 	}
+
 
 	public LocalDate getFechaInicioExpL() {
-		return FechaInicioExpL;
+		return fechaInicioExpL;
 	}
+
 
 	public void setFechaInicioExpL(LocalDate fechaInicioExpL) {
-		FechaInicioExpL = fechaInicioExpL;
+		this.fechaInicioExpL = fechaInicioExpL;
 	}
+
 
 	public LocalDate getFechaFinExpL() {
-		return FechaFinExpL;
+		return fechaFinExpL;
 	}
 
+
 	public void setFechaFinExpL(LocalDate fechaFinExpL) {
-		FechaFinExpL = fechaFinExpL;
+		this.fechaFinExpL = fechaFinExpL;
 	}
+
 
 	public Curriculum getCurriculum() {
 		return curriculum;
 	}
 
+
 	public void setCurriculum(Curriculum curriculum) {
 		this.curriculum = curriculum;
 	}
 
-	
-	
-	
+
 
 	
 	
