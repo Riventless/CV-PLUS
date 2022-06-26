@@ -2,20 +2,44 @@ package com.example.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+
+
 import com.example.entities.Empresa;
 import com.example.repository.EmpresaRepository;
 
-import org.springframework.stereotype.Service;
 @Service
-public class EmpresaService {
-
+public class EmpresaService{
+	@Autowired
 	private EmpresaRepository empresaRepository;
 	
-	EmpresaService(EmpresaRepository empresaRepository){
-		this.empresaRepository=empresaRepository;
+	public List<Empresa> listarEmpresa(){
+		
+		List<Empresa> empresas=empresaRepository.findAll();
+		
+		return empresas;
 	}
 	
-	public List<Empresa> getAllEmpresas(){
-		return empresaRepository.findAll();
+	
+	public int registrarEmpresa(Empresa empresa) {
+		int existeEmpresa=empresaRepository.verificarExistenciaEmpresa(empresa.getRuc());
+		
+		if(existeEmpresa==0)
+			empresaRepository.save(empresa);
+		
+		return existeEmpresa;
 	}
+	
+	
+	public List<Empresa> buscarEmpresaporRuc(String Ruc){
+		
+		List<Empresa> empresas=empresaRepository.buscarEmpresaPorRuc(Ruc);
+		
+		
+		return empresas;
+	}
+
 }

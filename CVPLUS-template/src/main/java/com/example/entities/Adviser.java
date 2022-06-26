@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Adviser")
+@Table(name="Advisers")
 public class Adviser {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Adviser {
 	private String Email_As;
 
 	@Column(name = "Dni_As", nullable = false)
-	private Long Dni_As;
+	private String Dni_As;
 	
 	@Column(name = "Num_Cel_As", nullable = false)
 	private Long Num_Cel_As;
@@ -66,11 +66,11 @@ public class Adviser {
 		Email_As = email_As;
 	}
 
-	public Long getDni_As() {
+	public String getDni_As() {
 		return Dni_As;
 	}
 
-	public void setDni_As(Long dni_As) {
+	public void setDni_As(String dni_As) {
 		Dni_As = dni_As;
 	}
 

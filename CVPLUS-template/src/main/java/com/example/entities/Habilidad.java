@@ -12,21 +12,24 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Habilidades")
+@Table(name="habilidades")
 public class Habilidad {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idHabilidad;
 	
-	@Column(name = "DescripcionHabi", length = 200, nullable = false)
-	private String DescripcionHabi;
+	@Column(name = "nombreHabilidad", length = 50, nullable = false)
+	private String nombreHabilidad;
 	
-	@Column(name = "NivelHabi", length = 50, nullable = false)
-	private String NivelHabi;
+	@Column(name = "descripcionHabilidad", length = 200, nullable = false)
+	private String descripcionHabilidad;
+	
+	@Column(name = "nivelHabilidad", length = 50, nullable = false)
+	private String nivelHabilidad;
 	
 	
 	@ManyToOne
-	@JoinColumn(name="Id_Curriculum",nullable=false)
+	@JoinColumn(name="id_Curriculum",nullable=false)
 	private Curriculum curriculum;
 
 
@@ -40,23 +43,33 @@ public class Habilidad {
 	}
 
 
-	public String getDescripcionHabi() {
-		return DescripcionHabi;
+	public String getNombreHabilidad() {
+		return nombreHabilidad;
 	}
 
 
-	public void setDescripcionHabi(String descripcionHabi) {
-		DescripcionHabi = descripcionHabi;
+	public void setNombreHabilidad(String nombreHabilidad) {
+		this.nombreHabilidad = nombreHabilidad;
 	}
 
 
-	public String getNivelHabi() {
-		return NivelHabi;
+	public String getDescripcionHabilidad() {
+		return descripcionHabilidad;
 	}
 
 
-	public void setNivelHabi(String nivelHabi) {
-		NivelHabi = nivelHabi;
+	public void setDescripcionHabilidad(String descripcionHabilidad) {
+		this.descripcionHabilidad = descripcionHabilidad;
+	}
+
+
+	public String getNivelHabilidad() {
+		return nivelHabilidad;
+	}
+
+
+	public void setNivelHabilidad(String nivelHabilidad) {
+		this.nivelHabilidad = nivelHabilidad;
 	}
 
 
@@ -68,6 +81,9 @@ public class Habilidad {
 	public void setCurriculum(Curriculum curriculum) {
 		this.curriculum = curriculum;
 	}
+
+
+	
 
 
 
