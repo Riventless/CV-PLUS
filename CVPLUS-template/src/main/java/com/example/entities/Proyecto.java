@@ -36,7 +36,7 @@ public class Proyecto {
 	    		   @JoinColumn(name="proyecto_id",referencedColumnName = "IdProyecto",nullable = false)
 	       },
 	       inverseJoinColumns = {
-	    		   @JoinColumn(name="portafolio_id",referencedColumnName = "IdPortafolio",nullable = false)
+	    		   @JoinColumn(name="portafolio_id",referencedColumnName = "id",nullable = false)
 	       }
 	       )
 	private List<Portafolio> portafolios = new ArrayList<>();
