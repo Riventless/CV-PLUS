@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+			
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+			
+			 <p:panelGrid id="panGriBuscador" columns="3" style="width:100%">
+					<p:outputLabel value="Buscar Por Nombre:" for="txtSearchName" />
+					<p:inputText id="txtSearchName"  value="#{businessController.filterName}" />
+					
+					<p:commandButton value="Buscar" icon="ui-icon-disk" 
+						action="#{businessController.searchProductByName()}" ajax="false"
+						update=":frm:datTabbusinesss:frm:men"/>
+				</p:panelGrid>
+			
+				<p:dataTable id="datTabbusinesss"
+					emptyMessage="No existen Empresas registradas"
+					value="#{businessController.businesss}" var="business"
+					rowKey="#{business.idEmpresa}" selectionMode="single"
+					paginator="true"
+					rows="4">
+	           
+					<p:column headerText="Id Empresa">
+						<p:outputLabel value="#{business.idEmpresa}" />
+					</p:column>
+					<p:column headerText="Dirección Empresa">
+						<p:outputLabel value="#{business.direccion_Empresa}" />
+					</p:column>
+					<p:column headerText="Email">
+						<p:outputLabel value="#{business.email_Empresa}" />
+					</p:column>
+					<p:column headerText="Nombre Empresa">
+						<p:outputLabel value="#{business.nombre_Empresa}" />
+					</p:column>
+					
+					<p:column headerText="Numero de celular">
+						<p:outputLabel value="#{business.numTelf}" />
+					</p:column>
+					
+					<p:column headerText="Ruc">
+						<p:outputLabel value="#{business.ruc}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
+			
+			
+			
+			
+				
